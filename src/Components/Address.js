@@ -80,7 +80,7 @@ const Address = () => {
   return (
     <div className="container">
       <div className="d-flex my-2 justify-content-between">
-        <h4>Saved Address</h4>
+        <h4>Saved Addres</h4>
         <button
           className="btn btn-danger"
           onClick={() => {

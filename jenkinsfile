@@ -9,16 +9,14 @@ pipeline {
         }
         stage('Deliver') {
             steps {
-                
+                // Execute deliver.sh script
+                bat '.\\jenkins\\scripts\\deliver.sh'
 
-               
-                bat '.\jenkins\scripts\deliver.sh'
-
-                
+                // Wait for user input (optional)
                 input message: 'Finished using the website? (Click "Proceed" to continue)'
 
-                
-                bat '.\jenkins\scripts\kill.sh'
+                // Execute kill.sh script
+                bat '.\\jenkins\\scripts\\kill.sh'
             }
         }
     }

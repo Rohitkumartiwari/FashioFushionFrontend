@@ -3,6 +3,7 @@ import img1 from "../images/empty_cart.jpg";
 import img2 from "../images/portrait-fashionable-woman-oversized-sweater-removebg-preview.png";
 import img3 from "../images/firstorder20off.jpg";
 import { Link } from "react-router-dom";
+import { useCartContext } from "../MyContext";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import axios from "axios";
 const Cart = () => {
@@ -17,6 +18,10 @@ const Cart = () => {
   const [offer, setOffer] = useState([]);
   const [isCartAdded, setIsCartAdded] = useState(false);
   const [isCartDelete, setIsCartDelete] = useState(false);
+  const {
+    
+    update,setUpdate
+  } = useCartContext();
   const toggle = () => setModal(!modal);
   const user = JSON.parse(localStorage.getItem("user"));
   useEffect(() => {
@@ -130,7 +135,7 @@ const Cart = () => {
         .delete(
           `http://localhost:4000/cart-delete/${item?.items?._id}/${user?._id}`
         )
-        .then((res) => setIsCartDelete(!isCartDelete))
+        .then((res) => {setIsCartDelete(!isCartDelete);setUpdate(!update)})
         .catch((err) => console.log(err));
     }
     axios
@@ -145,6 +150,7 @@ const Cart = () => {
       )
       .then((response) => {
         setIsCartAdded(!isCartAdded);
+        setUpdate(!update)
       })
       .catch((error) => {
         console.error("Error updating cart item:", error);

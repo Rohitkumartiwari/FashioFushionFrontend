@@ -23,10 +23,11 @@ const MyContextProvider =({children})=>
     const [search, setSearch] = useState(""); 
    const [showCard, setShowCard] = useState(""); 
    const [dbWishList, setDbWishList] = useState([]);
-    const[user,setUser]=useState("")
+    const[user,setUser]=useState("");
+    const[update,setUpdate]=useState(false);
     
    
-return< MyContext.Provider value={{carts,setCarts,search,setSearch,showCard,setShowCard,user,setUser,wishlist, setWishList,dbWishList, setDbWishList}}>
+return< MyContext.Provider value={{carts,setCarts,search,setSearch,showCard,setShowCard,user,setUser,wishlist, setWishList,dbWishList, setDbWishList,update,setUpdate}}>
 {children}
 </MyContext.Provider>
 }

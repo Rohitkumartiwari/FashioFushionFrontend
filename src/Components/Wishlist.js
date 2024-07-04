@@ -11,6 +11,10 @@ const Wishlist = () => {
   const [cartDepend, setCartDepend] = useState(false);
   const [isCartDelete, setIsCartDelete] = useState(false);
   const user = JSON.parse(localStorage.getItem("user"));
+  const {
+    
+    update,setUpdate
+  } = useCartContext();
   const location = useLocation();
   useEffect(() => {
     fetch(`http://localhost:4000/cart-list/${user?._id}`)
@@ -42,6 +46,7 @@ const Wishlist = () => {
         })
         .then((res) => {
           setCartDepend(!cartDepend);
+          setUpdate(!update)
           axios
             .delete(
               `http://localhost:4000/wishlist-delete/${cartData?.productId}/${user?._id}`
@@ -58,7 +63,11 @@ const Wishlist = () => {
         `http://localhost:4000/wishlist-delete/${cartData?.productId}/${user?._id}`
       )
       .then((res) =>
-        setDbWishList(dbWishList?.filter((item) => item?._id !== cartData?._id))
+      {
+        setDbWishList(dbWishList?.filter((item) => item?._id !== cartData?._id));
+        setUpdate(!update)
+      }
+      
       )
       .catch((err) => console.log(err));
   };

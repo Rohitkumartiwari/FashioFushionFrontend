@@ -22,8 +22,9 @@ const Header = () => {
     setWishList,
     dbWishList,
     setDbWishList,
+    update,setUpdate
   } = useCartContext();
-
+console.log(update,"update")
   const { pathname } = useLocation();
   const [carts, setCarts] = useState([]);
   useEffect(() => {
@@ -31,7 +32,7 @@ const Header = () => {
       .then((res) => res.json())
       .then((data) => setCarts(data))
       .catch((err) => console.log(err));
-  }, []);
+  }, [update]);
   const loggedOut = () => {
     localStorage.removeItem("loggedin");
     navigate("/login");
@@ -39,11 +40,11 @@ const Header = () => {
   useEffect(() => {
     axios
       .get(`http://localhost:4000/wishlistData/${user?._id}`)
-      .then((res) => setDbWishList(res?.data))
+      .then((res) => {setDbWishList(res?.data)})
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [update]);
   return (
     <>
       <div className="header_wrapper">

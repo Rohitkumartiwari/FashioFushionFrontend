@@ -12,13 +12,9 @@ const Home = () => {
     setCarts,
     search,
     setSearch,
-    // showCard,
-    // setShowCard,
-    // wishlist,
-    // setWishList,
-    // search,
     dbWishList,
     setDbWishList,
+    update,setUpdate
   } = useCartContext();
   const user = JSON.parse(localStorage.getItem("user"));
   const [category, setCategoryType] = useState("");
@@ -82,7 +78,7 @@ const Home = () => {
     if (isItemPresent) {
       axios
         .post("http://localhost:4000/cart", user?._id, cartData)
-        .then((res) => setCartDepend(!cartDepend))
+        .then((res) => {setCartDepend(!cartDepend);setUpdate(!update)})
         .catch((err) => console.log(err));
     } else {
       // const updatedCart = [...carts, { ...cartData, quantity: 1 }];
@@ -93,14 +89,14 @@ const Home = () => {
           userId: user?._id,
           items: cartData,
         })
-        .then((res) => setCartDepend(!cartDepend))
+        .then((res) => {setCartDepend(!cartDepend);setUpdate(!update)})
         .catch((err) => console.log(err));
     }
   };
   useEffect(() => {
     axios
       .get(`http://localhost:4000/wishlistData/${user?._id}`)
-      .then((res) => setDbWishList(res?.data))
+      .then((res) => {setDbWishList(res?.data);setUpdate(!update)})
       .catch((err) => {
         console.log(err);
       });

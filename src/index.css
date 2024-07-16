@@ -171,10 +171,13 @@ li:hover ul#submenu
 .active
 {
   border: 1px solid rgb(136, 134, 210);
-  padding: 5px 10px;
-  margin-inline: 10px;
-  cursor: pointer;
-  background: #e5e1e1;
+    padding: 5px 10px;
+    
+    cursor: pointer;
+    background: blue;
+    color: white;
+    border-radius: 10px;
+    width: 100%;
 }
 .address_list_wrapper
 {
@@ -415,10 +418,7 @@ border-radius: 5px;
   height: 100%;
   width: 100%;
 }
-.profile_page_wrapper
-{
-  background-color: #f5f5f5;
-}
+
 .profile-wrapper
 {
   border: 1px solid none;
@@ -477,6 +477,57 @@ border-radius: 5px;
   height: 40px;
   width: 40px;
 }
+.demo-title
+{
+  color: blue;
+    font-weight: 600;
+}
+.demobook-wrapper
+{
+  background-color: #f5f6fa;
+  height: 100vh;
+}
+.table
+{
+  background-color: white;
+ 
+  border-radius: 10px;
+}
+.add-ranch
+{
+  border: 1px solid #ff8743;
+  color: white;
+  background-color: #ff8743;
+  padding: 10px 20px;
+  border-radius: 10px;
+}
+.form-wrapper
+{
+  border: 1px solid rgb(230, 222, 222);
+  border-radius: 10px;
+  background-color: white;
+}
+.form-control
+{
+  background-color: #f5f6fa;
+}
+.cancel
+{
+  border: 2px solid #4880ff;
+  border-radius: 10px;
+  color: #4880ff;
+  background-color: white;
+  padding: 5px 20px;
+}
+.save
+{
+  border: 2px solid #4880ff;
+  border-radius: 10px;
+  color: white;
+  background-color: #4880ff;
+  padding: 5px 25px;
+  
+}
 @media screen and (max-width: 768px) {
   .section_head {
     display: none; /* Hide the search section on small screens */
@@ -488,10 +539,10 @@ border-radius: 5px;
   .cart_section {
     display: none !important;
   }
-  .profile_sidebar
+  /* .profile_sidebar
   {
     display: none !important;
-  }
+  } */
   .profile_wrapper_design
   {
     padding-inline: 0px;
